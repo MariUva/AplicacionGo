@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computación en la nube</title>
+    <link rel="icon" href="../logos/file.png" type="image/png"> <!-- Cambia a .ico si es posible -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> <!-- Enlace a Bootstrap Icons -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .icon {
+            font-size: 30px; /* Ajusta el tamaño del ícono según sea necesario */
+            margin-right: 10px; /* Espacio entre el ícono y la fecha */
+        }
+
+        .title {
+            font-size: 18px;
+            display: flex;
+            align-items: center; /* Alinea el ícono y el texto de la fecha verticalmente */
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px; /* Espacio entre el contenido principal y el footer */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 40px; /* Aumentado a 40px */
+            text-align: center; /* Centra el texto */
+        }
+
+        .images {
+            display: flex; /* Cambiado a flex para que las imágenes estén en una fila */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            gap: 20px; /* Espacio entre las imágenes */
+            width: 100%;
+            max-width: 1200px; /* Ancho máximo del contenedor */
+        }
+
+        .images img {
+            width: 250px; /* Ancho mantenido en 250px */
+            height: 200px; /* Establece una altura fija de 200px */
+            object-fit: cover; /* Mantiene la proporción de la imagen */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* Estilo para el recuadro azul */
+        .nombre-host {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;
+            top: 80px; /* Cambié de 20px a 80px para moverlo más abajo */
+            right: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        }
+
+        /* Footer styles */
+        .footer-main {
+            padding: 10px 0;
+        }
+
+        .footer-bottom {
+            padding: 10px 0;
+        }
+
+        p {
+            margin: 5px 0; /* Reducir los márgenes de los párrafos */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <i class="bi bi-cloud-lightning-rain-fill icon"></i> <!-- Ícono en la parte superior izquierda -->
+            <div id="dateTime"></div> <!-- Fecha a la derecha -->
+        </div>
+    </header>
+
+    <script>
+        function actualizarFechaYHora() {
+            const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const ahora = new Date();
+            const fechaHora = ahora.toLocaleString('es-ES', opciones);
+            document.getElementById('dateTime').textContent = fechaHora;
+        }
+
+        // Llama a la función al cargar la página
+        actualizarFechaYHora();
+        // Actualiza cada segundo
+        setInterval(actualizarFechaYHora, 1000);
+    </script>
+
+    <main>
+        <h1>Hello GO</h1>
+
+        <div class="images">
+            <img src="{{imagen1}}" alt="Imagen 1">
+            <img src="{{imagen2}}" alt="Imagen 2">
+            <img src="{{imagen3}}" alt="Imagen 3">
+            <img src="{{imagen4}}" alt="Imagen 4">
+        </div>
+    </main>
+
+    <!-- Recuadro azul con el nombre del host -->
+    <div class="nombre-host">
+        Host: {{nombreHost}}
+    </div>
+
+    <!-- Main Footer -->
+    <footer>
+        <section class="footer-main">
+            <div class="text-center">
+                <h3 class="text-size-16">Grupo conformado por:</h3>
+                <p class="text-size-14">
+                    Juan Manuel Londoño<br>
+                    Esteban Ortega<br>
+                    Mariana Urrea
+                </p>
+            </div>
+        </section>
+
+        <section class="footer-bottom">
+            <div class="text-center">
+                <p>© Todos los derechos reservados.</p>
+                <p class="text-size-12">Computación en la nube. Laboratorio #7 2024-2</p>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

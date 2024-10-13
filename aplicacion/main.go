@@ -14,21 +14,11 @@ import (
 )
 
 func main() {
-	var port string
-	var rutaImagenes string
-
-	// Solicita al usuario que ingrese el puerto
-	fmt.Print("Ingrese el puerto (sin el ':', por ejemplo, 8083): ")
-	fmt.Scanln(&port)
-
-	// Solicita al usuario que ingrese la ruta del directorio de imágenes
-	fmt.Print("Ingrese la ruta del directorio de imágenes: ")
-	fmt.Scanln(&rutaImagenes)
-
-	// Añade ":" al puerto ingresado
-	port = ":" + port
-
-	// Inicia el servidor con el puerto y la ruta de imágenes ingresados
+	// Puerto por defecto y ruta de imágenes
+	port := ":8000"
+	rutaImagenes := "/home/mar/archivos2"
+	// rutaImagenes := "C:/Users/maria/Desktop/Archivos"
+	// Inicia el servidor con el puerto y la ruta de imágenes por defecto
 	iniciarServidor(port, rutaImagenes)
 }
 
@@ -88,6 +78,8 @@ func insertarImagenesEnHTML(html string, imagenes []string, nombreHost string) s
 func iniciarServidor(port string, rutaImagenes string) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// Lee el archivo index.html
+		//htmlBytes, err := ioutil.ReadFile("../html/index.html")
+
 		htmlBytes, err := ioutil.ReadFile("/home/mar/index.html")
 		if err != nil {
 			http.Error(w, "No se pudo leer el archivo HTML", http.StatusInternalServerError)
